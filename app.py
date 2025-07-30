@@ -10,8 +10,6 @@ app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
-classifier = ImageClassifier()
-
 MODEL_PATH = "model/model.pth"
 MODEL_URL = "https://drive.google.com/file/d/1EDzbNdQr0q4NDPIF1k_Tywt9Jio5ETid/view?usp=drive_link"
 
@@ -44,3 +42,5 @@ def download_model():
         print("Download complete.")
 
 download_model()
+
+classifier = ImageClassifier()
