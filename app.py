@@ -11,7 +11,7 @@ app.config["TEMPLATES_AUTO_RELOAD"] = True
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 MODEL_PATH = "model/model.pth"
-MODEL_URL = "https://drive.google.com/file/d/1EDzbNdQr0q4NDPIF1k_Tywt9Jio5ETid/view?usp=drive_link"
+MODEL_URL = "https://drive.google.com/uc?export=download&id=1EDzbNdQr0q4NDPIF1k_Tywt9Jio5ETid"
 
 @app.route("/", methods=['GET', 'POST'])
 def index():
