@@ -41,6 +41,6 @@ def download_model():
                     f.write(chunk)
         print("Download complete.")
 
-download_model()
+#download_model()
 
-classifier = ImageClassifier()
+#classifier = ImageClassifier()
