@@ -3,6 +3,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torchvision.transforms.v2 as transforms
 from PIL import Image
+
+MODEL_PATH = "model/model.pth"
     
 class ASLCNN(nn.Module):
     def __init__(self, num_classes=26):  # change to match your dataset
@@ -46,7 +48,7 @@ class ImageClassifier():
 
         self.loadedModel = ASLCNN()
         self.loadedModel = self.loadedModel.to(self.device)
-        self.loadedModel.load_state_dict(torch.load("./model/model.pth", map_location=self.device, weights_only=False))
+        self.loadedModel.load_state_dict(torch.load(MODEL_PATH, map_location=self.device, weights_only=False))
         self.loadedModel.eval()
 
         self.testtransform = transforms.Compose([
