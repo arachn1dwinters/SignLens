@@ -1,0 +1,65 @@
+body {
+    background-color: rgb(28, 28, 28);
+}
+
+.FormAndResultContainer {
+    display: flex;
+    min-height: 98vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#image_selector {
+    visibility: hidden;
+}
+
+#image_selector_alt{
+    border-radius: 50px;
+    transition: background-color 200ms;
+    transition: color 1s;
+    transition: border 1s;
+    background-color: rgb(28, 28, 28);
+    border: 2px solid rgb(178, 178, 178);
+    color: rgb(178, 178, 178);
+    box-shadow: none;
+    height: 80px;
+    width: 200px;
+    text-align: center;
+    line-height: 80px;
+}
+
+#image_selector_alt:hover {
+    background-color: rgb(178, 178, 178);
+    color: rgb(28, 28, 28);
+    border: 2px solid rgb(28, 28, 28);
+    cursor: grab;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+#selected_image {
+    width: 200px;
+    height: auto;
+    border-radius: 20px;
+    margin-left: 100px;
+}
+
+.Result {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#prediction {
+    color: rgb(178, 178, 178);
+    text-align: center;
+}
