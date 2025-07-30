@@ -1,7 +1,7 @@
 services:
   - type: web
+    runtime: python
     name: ASL-CNN
-    env: python
     buildCommand: |
       apt-get update && apt-get install -y git-lfs
       git lfs install
