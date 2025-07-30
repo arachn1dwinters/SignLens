@@ -46,7 +46,7 @@ class ImageClassifier():
 
         self.loadedModel = ASLCNN()
         self.loadedModel = self.loadedModel.to(self.device)
-        self.loadedModel.load_state_dict(torch.load("./model/model.pth", map_location=self.device))
+        self.loadedModel.load_state_dict(torch.load("./model/model.pth", map_location=self.device, weights_only=False))
         self.loadedModel.eval()
 
         self.testtransform = transforms.Compose([
