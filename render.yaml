@@ -1,6 +1,7 @@
 services:
   - type: web
     runtime: python
+    plan: free
     name: ASL-CNN
     buildCommand: |
       apt-get update && apt-get install -y git-lfs
