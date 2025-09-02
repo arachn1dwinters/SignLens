@@ -22,8 +22,14 @@ def index():
         if not os.path.exists(file_path):
             image.save(file_path)
 
+        predictionsDict = classifier.classifyImage(file_path)
+
         resultDict = {
-            "prediction": classifier.classifyImage(file_path),
+            "1": (list(predictionsDict.keys())[0], list(predictionsDict.values())[0]),
+            "2": (list(predictionsDict.keys())[1], list(predictionsDict.values())[1]),
+            "3": (list(predictionsDict.keys())[2], list(predictionsDict.values())[2]),
+            "4": (list(predictionsDict.keys())[3], list(predictionsDict.values())[3]),
+            "5": (list(predictionsDict.keys())[4], list(predictionsDict.values())[4]),
             "imageSrc": file_path
         }
         return render_template('index.html', result=resultDict)

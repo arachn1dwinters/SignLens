@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COSMOS '25</title>
+    <title>ASL Predictor</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
     <script src="{{ url_for('static', filename='js/index.js') }}"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,12 +18,23 @@
             <button type="submit" id="run_model_button">Run Model</button>
         </form>
 
-        <div class="Result">
-            {% if result %}
-                <h3 id="prediction">Predicted Letter: <br/> {{ result["prediction"] }}</h3>
+        {% if result %}
+            <div class="Result">
+                <div id="predictionText">
+                    <h3 id="prediction">Predicted Letter: <br/> {{ result["1"][0] }} <span class="percentage">({{ result["1"][1] }}%)</span></h3>
+                    <!-- <img src="{{ url_for('static', filename='images/SoundIcon.png' )}}" alt="Sound Icon" id="soundIcon"> -->
+                </div>
                 <img src="{{ result['imageSrc'] }}" alt="Selected Image" id="selected_image">
-            {% endif %}
-        </div>
+            </div>
+            <div class="RunnersUp">
+                <h3 id="runners_up">Runners Up:<br/>
+                    {{ result["2"][0] }} <span class="percentage">({{ result["2"][1] }}%)</span>,
+                    {{ result["3"][0] }} <span class="percentage">({{ result["3"][1] }}%)</span>,
+                    {{ result["4"][0] }} <span class="percentage">({{ result["4"][1] }}%)</span>,
+                    and {{ result["5"][0] }} <span class="percentage">({{ result["5"][1] }}%)</span>.
+                </h3>
+            </div>
+        {% endif %}
     </div>
 </body>
 </html>

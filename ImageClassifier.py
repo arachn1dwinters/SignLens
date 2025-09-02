@@ -6,6 +6,9 @@ from PIL import Image
 import numpy
 
 MODEL_PATH = "model/model.pth"
+
+LETTER_LIST = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 
+                    'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
     
 class ASLCNN(nn.Module):
     def __init__(self, num_classes=26):
@@ -57,20 +60,27 @@ class ImageClassifier():
             transforms.Normalize([0.5, 0.5, 0.5], [0.5, 0.5, 0.5]),
         ])
 
-    def predict(self, image):
-        image = image.convert("RGB")
+    def classifyImage(self, img_path):
+        image = Image.open(img_path)
         image = self.testtransform(image)
         image = image.to(self.device)
 
         with torch.no_grad():
             self.loadedModel.eval()
             output = self.loadedModel(image.unsqueeze(0))
-            predicted_class = output.argmax(dim=1).item()
 
-            predicted_class = self.idx_to_class(predicted_class)
-            print(f"Predicted Class: {predicted_class}")
+            k = 5
+            normalizedOutput = output
+            normalizedOutput = F.softmax(normalizedOutput, dim=1)
+            topFiveValues, topFiveIndices = torch.topk(normalizedOutput, k = k, largest = True, dim = 1)
+            topFiveValues = topFiveValues.squeeze()
+            topFiveIndices = topFiveIndices.squeeze()
 
-        return predicted_class
+        normalizedOutputDict = {
+            LETTER_LIST[idx.item()]: f"{val.item() * 100:.2f}"
+            for val, idx in zip(topFiveValues, topFiveIndices)
+        }
+        return normalizedOutputDict
 
     def idx_to_class(self, idx):
         letter_list = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 
