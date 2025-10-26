@@ -1,7 +1,7 @@
 # SignLens
 A model which can identify the letters of the ASL alphabet.
 
-# Instructions
+### Instructions
 Clone the full repository, install flask, and run
 ```flask run```
 
